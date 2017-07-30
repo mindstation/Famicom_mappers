@@ -1,0 +1,10 @@
+module vrmirroring_switcher (
+					input  wire mirr_control,
+					input  wire vram_a10,
+					output wire ppu_a10,
+					output wire ppu_a11					
+);
+
+
+
+endmodule
