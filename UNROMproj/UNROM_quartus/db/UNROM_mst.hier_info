@@ -4,18 +4,18 @@ cpu_a14 => inst.IN0
 cpu_a14 => inst1.IN0
 cpu_a14 => inst2.IN0
 cpu_a14 => inst3.IN0
-Ncpu_rw => hc161_like:inst4.Ncpu_rw
-Ncpu_rom_cs => hc161_like:inst4.Ncpu_rom_cs
-cpu_d[0] => hc161_like:inst4.cpu_d[0]
-cpu_d[1] => hc161_like:inst4.cpu_d[1]
-cpu_d[2] => hc161_like:inst4.cpu_d[2]
-cpu_d[3] => hc161_like:inst4.cpu_d[3]
+Ncpu_rw => hc161_like:counter.Ncpu_rw
+Ncpu_rom_cs => hc161_like:counter.Ncpu_rom_cs
+cpu_d[0] => hc161_like:counter.cpu_d[0]
+cpu_d[1] => hc161_like:counter.cpu_d[1]
+cpu_d[2] => hc161_like:counter.cpu_d[2]
+cpu_d[3] => hc161_like:counter.cpu_d[3]
 prg_a15 <= inst1.DB_MAX_OUTPUT_PORT_TYPE
 prg_a16 <= inst2.DB_MAX_OUTPUT_PORT_TYPE
 prg_a17 <= inst3.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|UNROM_mst|hc161_like:inst4
+|UNROM_mst|hc161_like:counter
 cpu_d[0] => hc161_krn[0].DATAIN
 cpu_d[1] => hc161_krn[1].DATAIN
 cpu_d[2] => hc161_krn[2].DATAIN

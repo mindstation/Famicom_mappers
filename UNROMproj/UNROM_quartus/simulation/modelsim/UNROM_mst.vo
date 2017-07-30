@@ -16,7 +16,7 @@
 // PROGRAM "Quartus II 32-bit"
 // VERSION "Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition"
 
-// DATE "04/05/2017 14:27:36"
+// DATE "07/30/2017 16:56:48"
 
 // 
 // Device: Altera EP4CE10F17C8 Package FBGA256
@@ -87,7 +87,7 @@ wire \cpu_d[2]~input_o ;
 wire \inst2~combout ;
 wire \cpu_d[3]~input_o ;
 wire \inst3~combout ;
-wire [3:0] \inst4|hc161_krn ;
+wire [3:0] \counter|hc161_krn ;
 
 
 // Location: IOIBUF_X30_Y0_N8
@@ -196,7 +196,7 @@ defparam \Ncpu_rw~input .simulate_z_as = "z";
 // synopsys translate_on
 
 // Location: FF_X25_Y1_N17
-dffeas \inst4|hc161_krn[0] (
+dffeas \counter|hc161_krn[0] (
 	.clk(\Ncpu_rom_cs~inputclkctrl_outclk ),
 	.d(gnd),
 	.asdata(\cpu_d[0]~input_o ),
@@ -207,21 +207,21 @@ dffeas \inst4|hc161_krn[0] (
 	.ena(!\Ncpu_rw~input_o ),
 	.devclrn(devclrn),
 	.devpor(devpor),
-	.q(\inst4|hc161_krn [0]),
+	.q(\counter|hc161_krn [0]),
 	.prn(vcc));
 // synopsys translate_off
-defparam \inst4|hc161_krn[0] .is_wysiwyg = "true";
-defparam \inst4|hc161_krn[0] .power_up = "low";
+defparam \counter|hc161_krn[0] .is_wysiwyg = "true";
+defparam \counter|hc161_krn[0] .power_up = "low";
 // synopsys translate_on
 
 // Location: LCCOMB_X25_Y1_N16
 cycloneive_lcell_comb inst(
 // Equation(s):
-// \inst~combout  = (\cpu_a14~input_o ) # (\inst4|hc161_krn [0])
+// \inst~combout  = (\cpu_a14~input_o ) # (\counter|hc161_krn [0])
 
 	.dataa(\cpu_a14~input_o ),
 	.datab(gnd),
-	.datac(\inst4|hc161_krn [0]),
+	.datac(\counter|hc161_krn [0]),
 	.datad(gnd),
 	.cin(gnd),
 	.combout(\inst~combout ),
@@ -242,7 +242,7 @@ defparam \cpu_d[1]~input .simulate_z_as = "z";
 // synopsys translate_on
 
 // Location: FF_X25_Y1_N19
-dffeas \inst4|hc161_krn[1] (
+dffeas \counter|hc161_krn[1] (
 	.clk(\Ncpu_rom_cs~inputclkctrl_outclk ),
 	.d(gnd),
 	.asdata(\cpu_d[1]~input_o ),
@@ -253,21 +253,21 @@ dffeas \inst4|hc161_krn[1] (
 	.ena(!\Ncpu_rw~input_o ),
 	.devclrn(devclrn),
 	.devpor(devpor),
-	.q(\inst4|hc161_krn [1]),
+	.q(\counter|hc161_krn [1]),
 	.prn(vcc));
 // synopsys translate_off
-defparam \inst4|hc161_krn[1] .is_wysiwyg = "true";
-defparam \inst4|hc161_krn[1] .power_up = "low";
+defparam \counter|hc161_krn[1] .is_wysiwyg = "true";
+defparam \counter|hc161_krn[1] .power_up = "low";
 // synopsys translate_on
 
 // Location: LCCOMB_X25_Y1_N18
 cycloneive_lcell_comb inst1(
 // Equation(s):
-// \inst1~combout  = (\cpu_a14~input_o ) # (\inst4|hc161_krn [1])
+// \inst1~combout  = (\cpu_a14~input_o ) # (\counter|hc161_krn [1])
 
 	.dataa(\cpu_a14~input_o ),
 	.datab(gnd),
-	.datac(\inst4|hc161_krn [1]),
+	.datac(\counter|hc161_krn [1]),
 	.datad(gnd),
 	.cin(gnd),
 	.combout(\inst1~combout ),
@@ -288,7 +288,7 @@ defparam \cpu_d[2]~input .simulate_z_as = "z";
 // synopsys translate_on
 
 // Location: FF_X25_Y1_N13
-dffeas \inst4|hc161_krn[2] (
+dffeas \counter|hc161_krn[2] (
 	.clk(\Ncpu_rom_cs~inputclkctrl_outclk ),
 	.d(gnd),
 	.asdata(\cpu_d[2]~input_o ),
@@ -299,21 +299,21 @@ dffeas \inst4|hc161_krn[2] (
 	.ena(!\Ncpu_rw~input_o ),
 	.devclrn(devclrn),
 	.devpor(devpor),
-	.q(\inst4|hc161_krn [2]),
+	.q(\counter|hc161_krn [2]),
 	.prn(vcc));
 // synopsys translate_off
-defparam \inst4|hc161_krn[2] .is_wysiwyg = "true";
-defparam \inst4|hc161_krn[2] .power_up = "low";
+defparam \counter|hc161_krn[2] .is_wysiwyg = "true";
+defparam \counter|hc161_krn[2] .power_up = "low";
 // synopsys translate_on
 
 // Location: LCCOMB_X25_Y1_N12
 cycloneive_lcell_comb inst2(
 // Equation(s):
-// \inst2~combout  = (\cpu_a14~input_o ) # (\inst4|hc161_krn [2])
+// \inst2~combout  = (\cpu_a14~input_o ) # (\counter|hc161_krn [2])
 
 	.dataa(\cpu_a14~input_o ),
 	.datab(gnd),
-	.datac(\inst4|hc161_krn [2]),
+	.datac(\counter|hc161_krn [2]),
 	.datad(gnd),
 	.cin(gnd),
 	.combout(\inst2~combout ),
@@ -334,7 +334,7 @@ defparam \cpu_d[3]~input .simulate_z_as = "z";
 // synopsys translate_on
 
 // Location: FF_X25_Y1_N23
-dffeas \inst4|hc161_krn[3] (
+dffeas \counter|hc161_krn[3] (
 	.clk(\Ncpu_rom_cs~inputclkctrl_outclk ),
 	.d(gnd),
 	.asdata(\cpu_d[3]~input_o ),
@@ -345,21 +345,21 @@ dffeas \inst4|hc161_krn[3] (
 	.ena(!\Ncpu_rw~input_o ),
 	.devclrn(devclrn),
 	.devpor(devpor),
-	.q(\inst4|hc161_krn [3]),
+	.q(\counter|hc161_krn [3]),
 	.prn(vcc));
 // synopsys translate_off
-defparam \inst4|hc161_krn[3] .is_wysiwyg = "true";
-defparam \inst4|hc161_krn[3] .power_up = "low";
+defparam \counter|hc161_krn[3] .is_wysiwyg = "true";
+defparam \counter|hc161_krn[3] .power_up = "low";
 // synopsys translate_on
 
 // Location: LCCOMB_X25_Y1_N22
 cycloneive_lcell_comb inst3(
 // Equation(s):
-// \inst3~combout  = (\cpu_a14~input_o ) # (\inst4|hc161_krn [3])
+// \inst3~combout  = (\cpu_a14~input_o ) # (\counter|hc161_krn [3])
 
 	.dataa(\cpu_a14~input_o ),
 	.datab(gnd),
-	.datac(\inst4|hc161_krn [3]),
+	.datac(\counter|hc161_krn [3]),
 	.datad(gnd),
 	.cin(gnd),
 	.combout(\inst3~combout ),
