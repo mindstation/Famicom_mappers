@@ -13,5 +13,4 @@ It's my implementation a few Famicom/Dendy cartridges by Altera's FPGA as mapper
 
 I use Altera Cyclone IV for the project. It's mounted on the CoreEP4CE10 board from Waveshare.
 
-Now there are just UNROM in the project (iNES Mapper 002).
-The UNROMproj consists a compilated Quartus project and scheme UNROM based cartridge.
+Now there are just UNROM in the project (iNES Mapper 002). The UNROMproj consists compiled Quartus project and scheme UNROM based cartridge.
