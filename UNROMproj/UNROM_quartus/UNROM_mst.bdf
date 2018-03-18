@@ -288,7 +288,7 @@ applicable agreement for further details.
 	)
 )
 (symbol
-	(rect 192 96 400 208)
+	(rect 200 96 400 208)
 	(text "hc161_like" (rect 5 0 59 11)(font "Arial" ))
 	(text "counter" (rect 8 96 48 107)(font "Arial" ))
 	(port
@@ -301,47 +301,47 @@ applicable agreement for further details.
 	(port
 		(pt 0 48)
 		(input)
-		(text "Ncpu_rw" (rect 0 0 44 11)(font "Arial" ))
-		(text "Ncpu_rw" (rect 21 43 65 54)(font "Arial" ))
+		(text "cpu_rw" (rect 0 0 37 11)(font "Arial" ))
+		(text "cpu_rw" (rect 21 43 58 54)(font "Arial" ))
 		(line (pt 0 48)(pt 16 48))
 	)
 	(port
 		(pt 0 64)
 		(input)
-		(text "Ncpu_rom_cs" (rect 0 0 69 11)(font "Arial" ))
-		(text "Ncpu_rom_cs" (rect 21 59 90 70)(font "Arial" ))
+		(text "Ncpu_romsel" (rect 0 0 66 11)(font "Arial" ))
+		(text "Ncpu_romsel" (rect 21 59 87 70)(font "Arial" ))
 		(line (pt 0 64)(pt 16 64))
 	)
 	(port
-		(pt 208 32)
+		(pt 200 32)
 		(output)
 		(text "hc161_out0" (rect 0 0 59 11)(font "Arial" ))
-		(text "hc161_out0" (rect 138 27 197 38)(font "Arial" ))
-		(line (pt 208 32)(pt 192 32))
+		(text "hc161_out0" (rect 130 27 179 38)(font "Arial" ))
+		(line (pt 200 32)(pt 184 32))
 	)
 	(port
-		(pt 208 48)
+		(pt 200 48)
 		(output)
 		(text "hc161_out1" (rect 0 0 57 11)(font "Arial" ))
-		(text "hc161_out1" (rect 139 43 196 54)(font "Arial" ))
-		(line (pt 208 48)(pt 192 48))
+		(text "hc161_out1" (rect 131 43 179 54)(font "Arial" ))
+		(line (pt 200 48)(pt 184 48))
 	)
 	(port
-		(pt 208 64)
+		(pt 200 64)
 		(output)
 		(text "hc161_out2" (rect 0 0 59 11)(font "Arial" ))
-		(text "hc161_out2" (rect 138 59 197 70)(font "Arial" ))
-		(line (pt 208 64)(pt 192 64))
+		(text "hc161_out2" (rect 130 59 179 70)(font "Arial" ))
+		(line (pt 200 64)(pt 184 64))
 	)
 	(port
-		(pt 208 80)
+		(pt 200 80)
 		(output)
 		(text "hc161_out3" (rect 0 0 59 11)(font "Arial" ))
-		(text "hc161_out3" (rect 138 75 197 86)(font "Arial" ))
-		(line (pt 208 80)(pt 192 80))
+		(text "hc161_out3" (rect 130 75 179 86)(font "Arial" ))
+		(line (pt 200 80)(pt 184 80))
 	)
 	(drawing
-		(rectangle (rect 16 16 192 96))
+		(rectangle (rect 16 16 184 96))
 	)
 )
 (connector
@@ -409,77 +409,77 @@ applicable agreement for further details.
 	(pt 160 160)
 )
 (connector
-	(pt 160 160)
-	(pt 160 144)
-)
-(connector
-	(pt 192 144)
-	(pt 160 144)
-)
-(connector
-	(pt 184 192)
-	(pt 184 160)
-)
-(connector
-	(pt 184 160)
-	(pt 192 160)
-)
-(connector
 	(pt 144 192)
 	(pt 184 192)
-)
-(connector
-	(pt 144 128)
-	(pt 192 128)
-	(bus)
 )
 (connector
 	(pt 520 88)
 	(pt 520 128)
 )
 (connector
-	(pt 424 32)
-	(pt 424 128)
-)
-(connector
-	(pt 424 128)
-	(pt 400 128)
-)
-(connector
-	(pt 440 128)
-	(pt 440 144)
-)
-(connector
 	(pt 440 128)
 	(pt 520 128)
-)
-(connector
-	(pt 440 144)
-	(pt 400 144)
 )
 (connector
 	(pt 536 200)
 	(pt 464 200)
 )
 (connector
+	(pt 536 144)
+	(pt 464 144)
+)
+(connector
+	(pt 424 32)
+	(pt 424 128)
+)
+(connector
+	(pt 440 128)
+	(pt 440 144)
+)
+(connector
 	(pt 464 200)
 	(pt 464 176)
+)
+(connector
+	(pt 464 144)
+	(pt 464 160)
+)
+(connector
+	(pt 400 128)
+	(pt 424 128)
+)
+(connector
+	(pt 400 144)
+	(pt 440 144)
+)
+(connector
+	(pt 400 160)
+	(pt 464 160)
 )
 (connector
 	(pt 400 176)
 	(pt 464 176)
 )
 (connector
-	(pt 464 144)
-	(pt 464 160)
+	(pt 160 160)
+	(pt 160 144)
 )
 (connector
-	(pt 536 144)
-	(pt 464 144)
+	(pt 184 192)
+	(pt 184 160)
 )
 (connector
-	(pt 400 160)
-	(pt 464 160)
+	(pt 144 128)
+	(pt 200 128)
+	(bus)
+)
+(connector
+	(pt 160 144)
+	(pt 200 144)
+)
+(connector
+	(pt 184 160)
+	(pt 200 160)
 )
 (junction (pt 504 216))
 (junction (pt 504 160))
