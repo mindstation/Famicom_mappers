@@ -1,0 +1,20 @@
+# ignore archive copies
+*~
+*.bak
+
+# .qws file ignore (what is it? but looks like unnecessary one)
+*.qws
+
+# ignore altera incremental compilation dirs
+db/
+incremental_db/
+
+# no simulation files need in repository
+simulation/
+
+# no compilation results need
+output_files/
+
+# but *.sof and *.jic is useful for FPGA loading
+!output_files/*.sof
+!output_files/*.jic
