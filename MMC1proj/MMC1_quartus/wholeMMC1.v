@@ -29,26 +29,22 @@ module wholeMMC1 (
 	reg[4:0] rPRG_b; //MMC1 PRG bank selector.
 		
 	rLoad = 5'b10000; //Временно! Пока power-on состояние не описал. Set inintial value
-	/*
-	rControl =
-	rPRG_b =
-	rCHR_b0 =
-	rCHR_b1 =
-	*/
-	
+	rControl = 5'b01100; //Все регистры по умолчанию сбрасываются в нулевое значение. Поэтому достаточно эти двух.
+//!!!!!!!Вышестоящие строки не откомпилируются. Так как оператор присваивания можно использовать или с assign или в always
+		
 	//Using nCPU_ROMSEL is better. Because a small time delay between #ROMSEL and M2 there is.
 	//#ROMSEL is later.
 
 	always @(negedge nCPU_ROMSEL) //"Talk" CPU mode is low M2 (aka Fi2). nCPU_ROMSEL = !(CPU_A15 && M2)
 		begin
-			WRAM_CE = 1'b0; //ROM R/W. Switch off W_RAM (it's positive logic).
+			WRAM_CE = 1'b1; //ROM R/W. Switch off W_RAM (it's negative logic).
 			if (!nCPU_RW) //CPU writes cartridge memory.
 				begin
 					nPRG_CE = 1'b1; //Mapper listens. Switch off PRG_ROM.
 					if (CPU_D7)
 						begin
 							rLoad = 5'b10000; // Initial value.
-							rControl = 5'b01100 //Set 8KB CHR bank, fixed last PRG bank at $C000, one-screen mirroring.
+							rControl = rControl || 5'b01100; //fixed last PRG bank at $C000, остальные биты без имзменений.
 						end
 					else
 						begin
