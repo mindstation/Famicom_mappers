@@ -36,37 +36,45 @@ module wholeMMC1 (
 	//Using nCPU_ROMSEL is better. Because a small time delay between #ROMSEL and M2 there is.
 	//#ROMSEL is later.
 
-	always @(negedge nCPU_ROMSEL) //"Talk" CPU mode is low M2 (aka Fi2). nCPU_ROMSEL = !(CPU_A15 && M2)
+	always @(negedge CPU_M2) //"Talk" CPU mode is low M2 (aka Fi2). nCPU_ROMSEL = !(CPU_A15 && M2)
+										//"Listen" CPU mode is high M2 (aka Fi2). nCPU_ROMSEL = !(CPU_A15 && M2)
 		begin
-			WRAM_CE = 1'b1; //ROM R/W. Switch off W_RAM (active signal is low (0)).
-			if (!nCPU_RW) //CPU writes cartridge memory.
+//!!!!!!!!!!!!!!Stoped here.
+			nPRG_CE = nCPU_ROMSEL && nCPU_RW; //Active signal is low (0).	
+			WRAM_CE = 0'b0; //No ROM selection. Switch on W_RAM (active is low).
+//!!!!!!!!!!!!!!
+			if (!nCPU_ROMSEL)
 				begin
-					nPRG_CE = 1'b1; //Mapper listens. Switch off PRG_ROM (active signal is low (0)).
-					if (CPU_D7)
+					WRAM_CE = 1'b1; //ROM is selected. Switch off W_RAM (active signal is low (0)).
+					if (!nCPU_RW) //CPU writes cartridge memory.
 						begin
-							rLoad = 5'b10000; // The initial value.
-							rControl = rControl || 5'b01100; //fixed last PRG bank at $C000, don't change other bits.
-						end
-					else
-						begin
-							if (rLoad[0]) //Inintial 1 come to a zero position, 4 writes was made.
+							nPRG_CE = 1'b1; //Mapper listens. Switch off PRG_ROM (active is low).
+							if (CPU_D7)
 								begin
-									case {CPU_A14, CPU_A13}
-										2'b00: rControl = {CPU_D0,rLoad[4:1]};
-										2'b01: rCHR_b0 = {CPU_D0,rLoad[4:1]};
-										2'b10: rCHR_b1 = {CPU_D0,rLoad[4:1]};
-										2'b11: rPRG_b = {CPU_D0,rLoad[4:1]};
-									endcase
-									rLoad = 5'b10000; // Reset to inintial value
+									rLoad = 5'b10000; // The initial value.
+									rControl = rControl || 5'b01100; //fixed last PRG bank at $C000, don't change other bits.
 								end
 							else
 								begin
-									rLoad = rLoad >> 1'd1;							
-									rLoad[4] = CPU_D0;							
-								end							
-						end
+									if (rLoad[0]) //Inintial 1 come to a zero position, 4 writes was made.
+										begin
+											case {CPU_A14, CPU_A13}
+												2'b00: rControl = {CPU_D0,rLoad[4:1]};
+												2'b01: rCHR_b0 = {CPU_D0,rLoad[4:1]};
+												2'b10: rCHR_b1 = {CPU_D0,rLoad[4:1]};
+												2'b11: rPRG_b = {CPU_D0,rLoad[4:1]};
+											endcase
+											rLoad = 5'b10000; // Reset to inintial value
+										end
+									else
+										begin
+											rLoad = rLoad >> 1'd1;							
+											rLoad[4] = CPU_D0;							
+										end							
+								end
+						end					
 				end
-
+				
 			case {rControl[1], rControl[0]} //Mirroring mode.			
 				2'b00: CIRAM_A10 = 1'b0; //One-screen Low.
 				2'b01: CIRAM_A10 = 1'b1; //One-screen High.
@@ -148,9 +156,7 @@ module wholeMMC1 (
 					CHR_A12 = PPU_A12; //It looks like a short circuit, if 
 						//MMC1 CHR_A12 connected to ROM with PPU_A12. DON'T DO IT!
 				end
-					
-			nPRG_CE = 1'b0; //ROM listens. Switch on it.
-				
+			
 		end
 		
 	always @(posedge nCPU_ROMSEL) //"Listen" CPU mode is high M2 (aka Fi2). nCPU_ROMSEL = !(CPU_A15 && M2)
