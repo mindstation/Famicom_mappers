@@ -155,17 +155,5 @@ module wholeMMC1 (
 				end
 			
 		end
-		
-	always @(posedge nCPU_ROMSEL) //"Listen" CPU mode is high M2 (aka Fi2). nCPU_ROMSEL = !(CPU_A15 && M2)
-		begin
-		 /*	!CPU_A15 || !M2
-			!CPU_A15 = nCPU_ROMSEL && M2
-			*/
-			//Непонятно как добывать А15 из nCPU_ROMSEL. А это, похоже, единственный вариант отличить
-			//запись чтение из RAM от ROM/маппера.			
-			if (M2 && CPU_A13 && CPU_A14)
-				nWRAM_CE = 1'b1; //RAM R/W. Switch on it (it's positive logic).
-				//Может так? М2 = 1 при переходе nCPU_ROMSEL в 1 только если CPU_A15 = 0?
-		end	
-		
+	
 endmodule
