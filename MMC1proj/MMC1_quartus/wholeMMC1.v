@@ -28,10 +28,10 @@ module wholeMMC1 (
 	reg[4:0] rCHR_b1; //MMC1 CHR bank 1 selector.
 	reg[4:0] rPRG_b; //MMC1 PRG bank selector.
 
-	always @(negedge CPU_M2) //"Talk" CPU mode is low M2 (aka Fi2). nCPU_ROMSEL = !(CPU_A15 && M2).
+	always @(negedge CPU_M2) //"Talk" CPU mode is low M2 (aka Fi2).
 										//"Listen" CPU mode is high M2 (aka Fi2). nCPU_ROMSEL = !(CPU_A15 && M2).
 		begin
-			if (!rLoad) //A "zero state" is a default power on reset state for FPGA registers.
+			if (rLoad == 5'b00000 && rControl == 5'b00000) //A "zero state" is a default power on reset state for FPGA registers.
 				begin		//Make right MMC1 power on reset.
 					rLoad = 5'b10000;
 					rControl = 5'b01100;
