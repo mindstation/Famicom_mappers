@@ -27,23 +27,21 @@ module wholeMMC1 (
 	reg[4:0] rCHR_b0; //MMC1 CHR bank 0 selector.
 	reg[4:0] rCHR_b1; //MMC1 CHR bank 1 selector.
 	reg[4:0] rPRG_b; //MMC1 PRG bank selector.
-	
-//How made the custom reset on power? I don't know now. Next two lines are just notes, don't compileable.
-	rLoad = 5'b10000; //Временно! Пока power-on состояние не описал. Set inintial value
-	rControl = 5'b01100; //Все регистры по умолчанию сбрасываются в нулевое значение. Поэтому достаточно эти двух.
-//!!!!!!!Вышестоящие строки не откомпилируются. Так как оператор присваивания можно использовать или с assign или в always
-		
-	//Using nCPU_ROMSEL is better. Because a small time delay between #ROMSEL and M2 there is.
-	//#ROMSEL is later.
 
 	always @(negedge CPU_M2) //"Talk" CPU mode is low M2 (aka Fi2). nCPU_ROMSEL = !(CPU_A15 && M2)
 										//"Listen" CPU mode is high M2 (aka Fi2). nCPU_ROMSEL = !(CPU_A15 && M2)
 		begin
+			if (!rLoad) //a "zero state" is a default power on reset state for FPGA registers
+				begin		//make right MMC1 power on reset
+					rLoad = 5'b10000;
+					rControl = 5'b01100;
+				end
+				
 //!!!!!!!!!!!!!!Stoped here.
 			nPRG_CE = nCPU_ROMSEL && nCPU_RW; //Active signal is low (0).	
 			WRAM_CE = 0'b0; //No ROM selection. Switch on W_RAM (active is low).
 //!!!!!!!!!!!!!!
-			if (!nCPU_ROMSEL)
+			if (!nCPU_ROMSEL) //#ROMSEL is later M2.
 				begin
 					WRAM_CE = 1'b1; //ROM is selected. Switch off W_RAM (active signal is low (0)).
 					if (!nCPU_RW) //CPU writes cartridge memory.
