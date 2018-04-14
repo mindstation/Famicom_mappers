@@ -15,7 +15,7 @@ module wholeMMC1 (
 						output wire PRG_A15,
 						output wire PRG_A14,
 						output wire nPRG_CE,
-						output wire WRAM_CE,
+						output wire nWRAM_CE,
 						output wire CHR_A16,
 						output wire CHR_A15,
 						output wire CHR_A14,
@@ -28,22 +28,21 @@ module wholeMMC1 (
 	reg[4:0] rCHR_b1; //MMC1 CHR bank 1 selector.
 	reg[4:0] rPRG_b; //MMC1 PRG bank selector.
 
-	always @(negedge CPU_M2) //"Talk" CPU mode is low M2 (aka Fi2). nCPU_ROMSEL = !(CPU_A15 && M2)
-										//"Listen" CPU mode is high M2 (aka Fi2). nCPU_ROMSEL = !(CPU_A15 && M2)
+	always @(negedge CPU_M2) //"Talk" CPU mode is low M2 (aka Fi2). nCPU_ROMSEL = !(CPU_A15 && M2).
+										//"Listen" CPU mode is high M2 (aka Fi2). nCPU_ROMSEL = !(CPU_A15 && M2).
 		begin
-			if (!rLoad) //a "zero state" is a default power on reset state for FPGA registers
-				begin		//make right MMC1 power on reset
+			if (!rLoad) //A "zero state" is a default power on reset state for FPGA registers.
+				begin		//Make right MMC1 power on reset.
 					rLoad = 5'b10000;
 					rControl = 5'b01100;
 				end
-				
-//!!!!!!!!!!!!!!Stoped here.
-			nPRG_CE = nCPU_ROMSEL && nCPU_RW; //Active signal is low (0).	
-			WRAM_CE = 0'b0; //No ROM selection. Switch on W_RAM (active is low).
-//!!!!!!!!!!!!!!
+
+			nPRG_CE = nCPU_ROMSEL || !nCPU_RW; 	//Switch on ROM when a catridge was selected, and the mapper had not been written.
+			nWRAM_CE = !nCPU_ROMSEL; 				//If nCPU_ROMSEL is hight, then no ROM or mapper selection. Switch on W_RAM (active is low).
+															//Active signal is low (0).
+
 			if (!nCPU_ROMSEL) //#ROMSEL is later M2.
 				begin
-					WRAM_CE = 1'b1; //ROM is selected. Switch off W_RAM (active signal is low (0)).
 					if (!nCPU_RW) //CPU writes cartridge memory.
 						begin
 							nPRG_CE = 1'b1; //Mapper listens. Switch off PRG_ROM (active is low).
@@ -165,7 +164,7 @@ module wholeMMC1 (
 			//Непонятно как добывать А15 из nCPU_ROMSEL. А это, похоже, единственный вариант отличить
 			//запись чтение из RAM от ROM/маппера.			
 			if (M2 && CPU_A13 && CPU_A14)
-				WRAM_CE = 1'b1; //RAM R/W. Switch on it (it's positive logic).
+				nWRAM_CE = 1'b1; //RAM R/W. Switch on it (it's positive logic).
 				//Может так? М2 = 1 при переходе nCPU_ROMSEL в 1 только если CPU_A15 = 0?
 		end	
 		
