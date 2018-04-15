@@ -22,25 +22,19 @@ module wholeMMC1 (
 						output wire CHR_A13,
 						output wire CHR_A12
 						);
-	reg[4:0] rLoad; //MMC1 Load shift register.
-	reg[4:0] rControl; //MMC1 Control register.
+	reg[4:0] rLoad = 5'b10000; //MMC1 Load shift register with power on reset state.
+	reg[4:0] rControl = 5'b01100; //MMC1 Control register with power on reset state.
 	reg[4:0] rCHR_b0; //MMC1 CHR bank 0 selector.
 	reg[4:0] rCHR_b1; //MMC1 CHR bank 1 selector.
 	reg[4:0] rPRG_b; //MMC1 PRG bank selector.
 
+	assign nPRG_CE = nCPU_ROMSEL || !nCPU_RW; 	//Switch on ROM when a catridge was selected, and the mapper had not been written.
+	assign nWRAM_CE = !nCPU_ROMSEL; 				//If nCPU_ROMSEL is hight, then no ROM or mapper selection. Switch on W_RAM (active is low).
+															//Active signal is low (0).
+	
 	always @(negedge CPU_M2) //"Talk" CPU mode is low M2 (aka Fi2).
 										//"Listen" CPU mode is high M2 (aka Fi2). nCPU_ROMSEL = !(CPU_A15 && M2).
 		begin
-			if (rLoad == 5'b00000 && rControl == 5'b00000) //A "zero state" is a default power on reset state for FPGA registers.
-				begin		//Make right MMC1 power on reset.
-					rLoad = 5'b10000;
-					rControl = 5'b01100;
-				end
-
-			nPRG_CE = nCPU_ROMSEL || !nCPU_RW; 	//Switch on ROM when a catridge was selected, and the mapper had not been written.
-			nWRAM_CE = !nCPU_ROMSEL; 				//If nCPU_ROMSEL is hight, then no ROM or mapper selection. Switch on W_RAM (active is low).
-															//Active signal is low (0).
-
 			if (!nCPU_ROMSEL) //#ROMSEL is later M2.
 				begin
 					if (!nCPU_RW) //CPU writes to the cartridge memory.
@@ -54,7 +48,7 @@ module wholeMMC1 (
 								begin
 									if (rLoad[0]) //Inintial 1 come to a zero position, 4 writes was made.
 										begin
-											case {CPU_A14, CPU_A13}
+											case ({CPU_A14, CPU_A13})
 												2'b00: rControl = {CPU_D0,rLoad[4:1]};
 												2'b01: rCHR_b0 = {CPU_D0,rLoad[4:1]};
 												2'b10: rCHR_b1 = {CPU_D0,rLoad[4:1]};
@@ -71,14 +65,14 @@ module wholeMMC1 (
 						end					
 				end
 				
-			case {rControl[1], rControl[0]} //Mirroring mode.			
+			case ({rControl[1], rControl[0]}) //Mirroring mode.			
 				2'b00: CIRAM_A10 = 1'b0; //One-screen Low.
 				2'b01: CIRAM_A10 = 1'b1; //One-screen High.
 				2'b10: CIRAM_A10 = PPU_A10; //Two-screen vertical.
 				2'b11: CIRAM_A10 = PPU_A11; //Two-screen horizontal.
 			endcase
 			
-			case {rControl[3], rControl[2]} //PRG ROM bank switching mode.
+			case ({rControl[3], rControl[2]}) //PRG ROM bank switching mode.
 				2'b00, 2'b01: //Switch 32 KB at $8000.
 					begin
 						PRG_A17 = rPRG_b[3];
@@ -141,7 +135,7 @@ module wholeMMC1 (
 							CHR_A14 = rCHR_b0[2];
 							CHR_A13 = rCHR_b0[1];
 							CHR_A12 = rCHR_b0[0];
-						else
+						end
 				end
 			else //If 0 then switch 8 KB at a time.
 				begin
