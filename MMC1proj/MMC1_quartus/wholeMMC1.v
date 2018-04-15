@@ -43,9 +43,8 @@ module wholeMMC1 (
 
 			if (!nCPU_ROMSEL) //#ROMSEL is later M2.
 				begin
-					if (!nCPU_RW) //CPU writes cartridge memory.
+					if (!nCPU_RW) //CPU writes to the cartridge memory.
 						begin
-							nPRG_CE = 1'b1; //Mapper listens. Switch off PRG_ROM (active is low).
 							if (CPU_D7)
 								begin
 									rLoad = 5'b10000; // The initial value.
