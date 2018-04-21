@@ -31,13 +31,10 @@ module wholeMMC1 (
 	reg[4:0] rPRG_b; //MMC1 PRG bank selector.
 
 	//Output registers
-	reg[0:0] oCIRAM_A; //Mirroring control
-	reg[3:0] oPRG_A; //Extended program ROM address
-	reg[4:0] oCHR_A; //Extended char ROM address	
+	reg[3:0] oPRG_A; //Extended program ROM address.
+	reg[3:0] oCHR_A; //Extended char ROM address. Five bits. The first one is taken by combinational logic.
 	
 	//Connecting output wires
-	assign CIRAM_A10 = oCIRAM_A[0];
-	
 	assign PRG_A17 = oPRG_A[3];
 	assign PRG_A16 = oPRG_A[2];
 	assign PRG_A15 = oPRG_A[1];
@@ -46,12 +43,21 @@ module wholeMMC1 (
 	assign nPRG_CE = nCPU_ROMSEL || !nCPU_RW; 	//Switch on ROM when a catridge was selected, and the mapper had not been written.
 	assign nWRAM_CE = !nCPU_ROMSEL; 				//If nCPU_ROMSEL is hight, then no ROM or mapper selection. Switch on W_RAM (active is low).
 															//Active signal is low (0).
-
+	
 	assign CHR_A16 = oCHR_A[4];
 	assign CHR_A15 = oCHR_A[3];
 	assign CHR_A14 = oCHR_A[2];
 	assign CHR_A13 = oCHR_A[1];
-	assign CHR_A12 = oCHR_A[0];
+	
+	//CPU and PPU works with different clocks. Made a combinational logic (multiplexer) for the PPU bus.
+	//A part of the CHR ROM bank switching mode. Multiplexer3.
+	assign CHR_A12 = rControl[4] ? (PPU_A12 ? rCHR_b1[0] : rCHR_b0[0]) : PPU_A12;
+		//It looks like a short circuit, if MMC1 CHR_A12 connected to ROM with PPU_A12. DON'T DO IT!
+	
+	//Mirroring mode. Multiplexer4. 00 - One-screen Low. 01 - One-screen High. 10 - Two-screen vertical. 11 - Two-screen horizontal.
+	assign CIRAM_A10 = rControl[1] ? (rControl[0] ? PPU_A11 : PPU_A10) : (rControl[0] ? 1'b1 : 1'b0);
+	
+	
 	
 	always @(negedge CPU_M2) //"Talk" CPU mode is low M2 (aka Fi2).
 										//"Listen" CPU mode is high M2 (aka Fi2). nCPU_ROMSEL = !(CPU_A15 && M2).
@@ -86,16 +92,6 @@ module wholeMMC1 (
 						end					
 				end
 			
-//This case may be problem. A MMC1 clk is the CPU M2, but PPU has it's own clk!
-			case ({rControl[1], rControl[0]}) //Mirroring mode.			
-				2'b00: oCIRAM_A[0] = 1'b0; //One-screen Low.
-				2'b01: oCIRAM_A[0] = 1'b1; //One-screen High.
-			//!!!!!!!!!!!!!!!!!!!!!!!
-				2'b10: oCIRAM_A[0] = PPU_A10; //Two-screen vertical.
-				2'b11: oCIRAM_A[0] = PPU_A11; //Two-screen horizontal.
-		  //!!!!!!!!!!!!!!!!!!!!!!!
-			endcase
-			
 			case ({rControl[3], rControl[2]}) //PRG ROM bank switching mode.
 				2'b00, 2'b01: //Switch 32 KB at $8000.
 					begin
@@ -123,19 +119,13 @@ module wholeMMC1 (
 					//If the same value is in both CHR registers, 4KB mode causes erratic switching of bank
 					//during rendering.
 					if (PPU_A12)
-						oCHR_A = rCHR_b1;
+						oCHR_A[4:1] = rCHR_b1[4:1];
 					else
-						oCHR_A = rCHR_b0;
+						oCHR_A[4:1] = rCHR_b0[4:1];
 				end
 			else //If 0 then switch 8 KB at a time.
-				begin
-					oCHR_A[4:1] = rCHR_b0[4:1];
-//Other problem place. oCHR_A works with CPU M2. PPU_A12 works with PPU clk.
-					//!!!!!!!!!!!!!!!!!!!!!!!!!
-					oCHR_A[0] = PPU_A12; //It looks like a short circuit, if 
-						//MMC1 CHR_A12 connected to ROM with PPU_A12. DON'T DO IT!
-					//!!!!!!!!!!!!!!!!!!!!!!!!!
-				end
+				oCHR_A[4:1] = rCHR_b0[4:1];
+				//The last bit is PPU_A12 by the combinational logic.
 			
 		end
 	
