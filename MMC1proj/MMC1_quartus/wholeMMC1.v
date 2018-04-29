@@ -24,11 +24,11 @@ module wholeMMC1 (
 						);
 						
 	//MMC1 registers
-	reg[4:0] rLoad = 5'b10000; //MMC1 Load shift register with power on reset state.
-	reg[4:0] rControl = 5'b01100; //MMC1 Control register with power on reset state.
-	reg[4:0] rCHR_b0; //MMC1 CHR bank 0 selector.
-	reg[4:0] rCHR_b1; //MMC1 CHR bank 1 selector.
-	reg[4:0] rPRG_b; //MMC1 PRG bank selector.
+	reg[4:0] rLoad = 5'b10000; 		//MMC1 Load shift register with power on reset state.
+	reg[4:0] rControl = 5'b01100; 	//MMC1 Control register with power on reset state.
+	reg[4:0] rCHR_b0; 					//MMC1 CHR bank 0 selector.
+	reg[4:0] rCHR_b1; 					//MMC1 CHR bank 1 selector.
+	reg[4:0] rPRG_b = 5'b00000; 		//MMC1 PRG bank selector with power on reset state like MMC1C version.
 
 	//Output registers
 	reg[3:0] oPRG_A; //Extended program ROM address.
