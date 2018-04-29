@@ -40,9 +40,9 @@ module wholeMMC1 (
 	assign PRG_A15 = oPRG_A[1];
 	assign PRG_A14 = oPRG_A[0];
 	
-	assign nPRG_CE = nCPU_ROMSEL || !nCPU_RW; 	//Switch on ROM when a catridge was selected, and the mapper had not been written.
-	assign nWRAM_CE = !nCPU_ROMSEL; 				//If nCPU_ROMSEL is hight, then no ROM or mapper selection. Switch on W_RAM (active is low).
-															//Active signal is low (0).
+	assign nPRG_CE = nCPU_ROMSEL || !nCPU_RW; 		//Switch on ROM when a catridge was selected, and the mapper had not been written.
+	assign nWRAM_CE = !(nCPU_ROMSEL && rPRG_b[4]); 	//If nCPU_ROMSEL is hight, then no ROM or mapper selection. Switch on W_RAM (active is low).
+																	//Active signal is low (0).
 	
 	assign CHR_A16 = oCHR_A[4];
 	assign CHR_A15 = oCHR_A[3];
