@@ -21,9 +21,9 @@ applicable agreement for further details.
 (header "graphic" (version "1.4"))
 (pin
 	(input)
-	(rect 48 56 216 72)
+	(rect 48 72 216 88)
 	(text "INPUT" (rect 125 0 154 10)(font "Arial" (font_size 6)))
-	(text "CPU_M2" (rect 5 0 52 11)(font "Arial" ))
+	(text "CPU_M2" (rect 5 0 51 11)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -37,9 +37,9 @@ applicable agreement for further details.
 )
 (pin
 	(input)
-	(rect 48 88 216 104)
+	(rect 48 112 216 128)
 	(text "INPUT" (rect 125 0 154 10)(font "Arial" (font_size 6)))
-	(text "CPU_A13" (rect 5 0 56 11)(font "Arial" ))
+	(text "CPU_A13" (rect 5 0 55 11)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -53,9 +53,9 @@ applicable agreement for further details.
 )
 (pin
 	(input)
-	(rect 48 120 216 136)
+	(rect 48 144 216 160)
 	(text "INPUT" (rect 125 0 154 10)(font "Arial" (font_size 6)))
-	(text "CPU_A14" (rect 5 0 56 11)(font "Arial" ))
+	(text "CPU_A14" (rect 5 0 55 11)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -69,9 +69,9 @@ applicable agreement for further details.
 )
 (pin
 	(input)
-	(rect 48 184 216 200)
+	(rect 48 224 216 240)
 	(text "INPUT" (rect 125 0 154 10)(font "Arial" (font_size 6)))
-	(text "CPU_D0" (rect 5 0 50 11)(font "Arial" ))
+	(text "CPU_D0" (rect 5 0 49 11)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -85,9 +85,9 @@ applicable agreement for further details.
 )
 (pin
 	(input)
-	(rect 48 216 216 232)
+	(rect 48 256 216 272)
 	(text "INPUT" (rect 125 0 154 10)(font "Arial" (font_size 6)))
-	(text "CPU_D7" (rect 5 0 50 11)(font "Arial" ))
+	(text "CPU_D7" (rect 5 0 49 11)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -101,41 +101,9 @@ applicable agreement for further details.
 )
 (pin
 	(input)
-	(rect 48 248 216 264)
+	(rect 48 296 216 312)
 	(text "INPUT" (rect 125 0 154 10)(font "Arial" (font_size 6)))
-	(text "nCPU_RW" (rect 5 0 61 11)(font "Arial" ))
-	(pt 168 8)
-	(drawing
-		(line (pt 84 12)(pt 109 12))
-		(line (pt 84 4)(pt 109 4))
-		(line (pt 113 8)(pt 168 8))
-		(line (pt 84 12)(pt 84 4))
-		(line (pt 109 4)(pt 113 8))
-		(line (pt 109 12)(pt 113 8))
-	)
-	(text "VCC" (rect 128 7 149 17)(font "Arial" (font_size 6)))
-)
-(pin
-	(input)
-	(rect 48 280 216 296)
-	(text "INPUT" (rect 125 0 154 10)(font "Arial" (font_size 6)))
-	(text "PPU_A12" (rect 5 0 55 11)(font "Arial" ))
-	(pt 168 8)
-	(drawing
-		(line (pt 84 12)(pt 109 12))
-		(line (pt 84 4)(pt 109 4))
-		(line (pt 113 8)(pt 168 8))
-		(line (pt 84 12)(pt 84 4))
-		(line (pt 109 4)(pt 113 8))
-		(line (pt 109 12)(pt 113 8))
-	)
-	(text "VCC" (rect 128 7 149 17)(font "Arial" (font_size 6)))
-)
-(pin
-	(input)
-	(rect 48 312 216 328)
-	(text "INPUT" (rect 125 0 154 10)(font "Arial" (font_size 6)))
-	(text "PPU_A11" (rect 5 0 54 11)(font "Arial" ))
+	(text "nCPU_RW" (rect 5 0 60 11)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -151,7 +119,7 @@ applicable agreement for further details.
 	(input)
 	(rect 48 344 216 360)
 	(text "INPUT" (rect 125 0 154 10)(font "Arial" (font_size 6)))
-	(text "PPU_A10" (rect 5 0 55 11)(font "Arial" ))
+	(text "PPU_A12" (rect 5 0 54 11)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -165,9 +133,41 @@ applicable agreement for further details.
 )
 (pin
 	(input)
-	(rect 32 152 216 168)
+	(rect 48 376 216 392)
+	(text "INPUT" (rect 125 0 154 10)(font "Arial" (font_size 6)))
+	(text "PPU_A11" (rect 5 0 53 11)(font "Arial" ))
+	(pt 168 8)
+	(drawing
+		(line (pt 84 12)(pt 109 12))
+		(line (pt 84 4)(pt 109 4))
+		(line (pt 113 8)(pt 168 8))
+		(line (pt 84 12)(pt 84 4))
+		(line (pt 109 4)(pt 113 8))
+		(line (pt 109 12)(pt 113 8))
+	)
+	(text "VCC" (rect 128 7 149 17)(font "Arial" (font_size 6)))
+)
+(pin
+	(input)
+	(rect 48 408 216 424)
+	(text "INPUT" (rect 125 0 154 10)(font "Arial" (font_size 6)))
+	(text "PPU_A10" (rect 5 0 54 11)(font "Arial" ))
+	(pt 168 8)
+	(drawing
+		(line (pt 84 12)(pt 109 12))
+		(line (pt 84 4)(pt 109 4))
+		(line (pt 113 8)(pt 168 8))
+		(line (pt 84 12)(pt 84 4))
+		(line (pt 109 4)(pt 113 8))
+		(line (pt 109 12)(pt 113 8))
+	)
+	(text "VCC" (rect 128 7 149 17)(font "Arial" (font_size 6)))
+)
+(pin
+	(input)
+	(rect 32 184 216 200)
 	(text "INPUT" (rect 141 0 170 10)(font "Arial" (font_size 6)))
-	(text "nCPU_ROMSEL" (rect 5 0 89 11)(font "Arial" ))
+	(text "nCPU_ROMSEL" (rect 5 0 88 11)(font "Arial" ))
 	(pt 184 8)
 	(drawing
 		(line (pt 100 12)(pt 125 12))
@@ -181,7 +181,7 @@ applicable agreement for further details.
 )
 (pin
 	(output)
-	(rect 464 56 640 72)
+	(rect 680 48 856 64)
 	(text "OUTPUT" (rect 1 0 41 10)(font "Arial" (font_size 6)))
 	(text "nCIRAM_A10" (rect 90 0 158 11)(font "Arial" ))
 	(pt 0 8)
@@ -197,7 +197,7 @@ applicable agreement for further details.
 )
 (pin
 	(output)
-	(rect 464 88 640 104)
+	(rect 680 96 856 112)
 	(text "OUTPUT" (rect 1 0 41 10)(font "Arial" (font_size 6)))
 	(text "PRG_A17" (rect 90 0 140 11)(font "Arial" ))
 	(pt 0 8)
@@ -213,7 +213,7 @@ applicable agreement for further details.
 )
 (pin
 	(output)
-	(rect 464 128 640 144)
+	(rect 680 128 856 144)
 	(text "OUTPUT" (rect 1 0 41 10)(font "Arial" (font_size 6)))
 	(text "PRG_A16" (rect 90 0 140 11)(font "Arial" ))
 	(pt 0 8)
@@ -229,7 +229,7 @@ applicable agreement for further details.
 )
 (pin
 	(output)
-	(rect 464 160 640 176)
+	(rect 680 160 856 176)
 	(text "OUTPUT" (rect 1 0 41 10)(font "Arial" (font_size 6)))
 	(text "PRG_A15" (rect 90 0 140 11)(font "Arial" ))
 	(pt 0 8)
@@ -245,7 +245,7 @@ applicable agreement for further details.
 )
 (pin
 	(output)
-	(rect 464 184 640 200)
+	(rect 680 192 856 208)
 	(text "OUTPUT" (rect 1 0 41 10)(font "Arial" (font_size 6)))
 	(text "PRG_A14" (rect 90 0 140 11)(font "Arial" ))
 	(pt 0 8)
@@ -261,7 +261,7 @@ applicable agreement for further details.
 )
 (pin
 	(output)
-	(rect 464 224 640 240)
+	(rect 680 232 856 248)
 	(text "OUTPUT" (rect 1 0 41 10)(font "Arial" (font_size 6)))
 	(text "nPRG_CE" (rect 90 0 143 11)(font "Arial" ))
 	(pt 0 8)
@@ -277,7 +277,7 @@ applicable agreement for further details.
 )
 (pin
 	(output)
-	(rect 464 248 640 264)
+	(rect 680 264 856 280)
 	(text "OUTPUT" (rect 1 0 41 10)(font "Arial" (font_size 6)))
 	(text "WRAM_CE" (rect 90 0 147 11)(font "Arial" ))
 	(pt 0 8)
@@ -293,7 +293,7 @@ applicable agreement for further details.
 )
 (pin
 	(output)
-	(rect 464 288 640 304)
+	(rect 680 312 856 328)
 	(text "OUTPUT" (rect 1 0 41 10)(font "Arial" (font_size 6)))
 	(text "CHR_A16" (rect 90 0 140 11)(font "Arial" ))
 	(pt 0 8)
@@ -309,7 +309,7 @@ applicable agreement for further details.
 )
 (pin
 	(output)
-	(rect 472 328 648 344)
+	(rect 680 344 856 360)
 	(text "OUTPUT" (rect 1 0 41 10)(font "Arial" (font_size 6)))
 	(text "CHR_A15" (rect 90 0 140 11)(font "Arial" ))
 	(pt 0 8)
@@ -325,7 +325,7 @@ applicable agreement for further details.
 )
 (pin
 	(output)
-	(rect 464 360 640 376)
+	(rect 680 376 856 392)
 	(text "OUTPUT" (rect 1 0 41 10)(font "Arial" (font_size 6)))
 	(text "CHR_A14" (rect 90 0 140 11)(font "Arial" ))
 	(pt 0 8)
@@ -341,7 +341,7 @@ applicable agreement for further details.
 )
 (pin
 	(output)
-	(rect 464 400 640 416)
+	(rect 680 408 856 424)
 	(text "OUTPUT" (rect 1 0 41 10)(font "Arial" (font_size 6)))
 	(text "CHR_A13" (rect 90 0 140 11)(font "Arial" ))
 	(pt 0 8)
@@ -357,7 +357,7 @@ applicable agreement for further details.
 )
 (pin
 	(output)
-	(rect 464 440 640 456)
+	(rect 680 440 856 456)
 	(text "OUTPUT" (rect 1 0 41 10)(font "Arial" (font_size 6)))
 	(text "CHR_A12" (rect 90 0 140 11)(font "Arial" ))
 	(pt 0 8)
@@ -370,4 +370,430 @@ applicable agreement for further details.
 		(line (pt 82 8)(pt 78 12))
 		(line (pt 78 12)(pt 82 8))
 	)
+)
+(symbol
+	(rect 328 96 560 336)
+	(text "wholeMMC1" (rect 5 0 66 11)(font "Arial" ))
+	(text "inst" (rect 8 224 26 235)(font "Arial" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "CPU_M2" (rect 0 0 46 11)(font "Arial" ))
+		(text "CPU_M2" (rect 21 27 67 38)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "CPU_A13" (rect 0 0 50 11)(font "Arial" ))
+		(text "CPU_A13" (rect 21 43 71 54)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48))
+	)
+	(port
+		(pt 0 64)
+		(input)
+		(text "CPU_A14" (rect 0 0 50 11)(font "Arial" ))
+		(text "CPU_A14" (rect 21 59 71 70)(font "Arial" ))
+		(line (pt 0 64)(pt 16 64))
+	)
+	(port
+		(pt 0 80)
+		(input)
+		(text "nCPU_ROMSEL" (rect 0 0 83 11)(font "Arial" ))
+		(text "nCPU_ROMSEL" (rect 21 75 104 86)(font "Arial" ))
+		(line (pt 0 80)(pt 16 80))
+	)
+	(port
+		(pt 0 96)
+		(input)
+		(text "CPU_D0" (rect 0 0 44 11)(font "Arial" ))
+		(text "CPU_D0" (rect 21 91 65 102)(font "Arial" ))
+		(line (pt 0 96)(pt 16 96))
+	)
+	(port
+		(pt 0 112)
+		(input)
+		(text "CPU_D7" (rect 0 0 44 11)(font "Arial" ))
+		(text "CPU_D7" (rect 21 107 65 118)(font "Arial" ))
+		(line (pt 0 112)(pt 16 112))
+	)
+	(port
+		(pt 0 128)
+		(input)
+		(text "nCPU_RW" (rect 0 0 55 11)(font "Arial" ))
+		(text "nCPU_RW" (rect 21 123 76 134)(font "Arial" ))
+		(line (pt 0 128)(pt 16 128))
+	)
+	(port
+		(pt 0 144)
+		(input)
+		(text "PPU_A12" (rect 0 0 49 11)(font "Arial" ))
+		(text "PPU_A12" (rect 21 139 70 150)(font "Arial" ))
+		(line (pt 0 144)(pt 16 144))
+	)
+	(port
+		(pt 0 160)
+		(input)
+		(text "PPU_A11" (rect 0 0 48 11)(font "Arial" ))
+		(text "PPU_A11" (rect 21 155 69 166)(font "Arial" ))
+		(line (pt 0 160)(pt 16 160))
+	)
+	(port
+		(pt 0 176)
+		(input)
+		(text "PPU_A10" (rect 0 0 49 11)(font "Arial" ))
+		(text "PPU_A10" (rect 21 171 70 182)(font "Arial" ))
+		(line (pt 0 176)(pt 16 176))
+	)
+	(port
+		(pt 232 32)
+		(output)
+		(text "CIRAM_A10" (rect 0 0 62 11)(font "Arial" ))
+		(text "CIRAM_A10" (rect 159 27 221 38)(font "Arial" ))
+		(line (pt 232 32)(pt 216 32))
+	)
+	(port
+		(pt 232 48)
+		(output)
+		(text "PRG_A17" (rect 0 0 50 11)(font "Arial" ))
+		(text "PRG_A17" (rect 169 43 219 54)(font "Arial" ))
+		(line (pt 232 48)(pt 216 48))
+	)
+	(port
+		(pt 232 64)
+		(output)
+		(text "PRG_A16" (rect 0 0 50 11)(font "Arial" ))
+		(text "PRG_A16" (rect 169 59 219 70)(font "Arial" ))
+		(line (pt 232 64)(pt 216 64))
+	)
+	(port
+		(pt 232 80)
+		(output)
+		(text "PRG_A15" (rect 0 0 50 11)(font "Arial" ))
+		(text "PRG_A15" (rect 169 75 219 86)(font "Arial" ))
+		(line (pt 232 80)(pt 216 80))
+	)
+	(port
+		(pt 232 96)
+		(output)
+		(text "PRG_A14" (rect 0 0 50 11)(font "Arial" ))
+		(text "PRG_A14" (rect 169 91 219 102)(font "Arial" ))
+		(line (pt 232 96)(pt 216 96))
+	)
+	(port
+		(pt 232 112)
+		(output)
+		(text "nPRG_CE" (rect 0 0 53 11)(font "Arial" ))
+		(text "nPRG_CE" (rect 167 107 220 118)(font "Arial" ))
+		(line (pt 232 112)(pt 216 112))
+	)
+	(port
+		(pt 232 128)
+		(output)
+		(text "nWRAM_CE" (rect 0 0 63 11)(font "Arial" ))
+		(text "nWRAM_CE" (rect 158 123 221 134)(font "Arial" ))
+		(line (pt 232 128)(pt 216 128))
+	)
+	(port
+		(pt 232 144)
+		(output)
+		(text "CHR_A16" (rect 0 0 50 11)(font "Arial" ))
+		(text "CHR_A16" (rect 169 139 219 150)(font "Arial" ))
+		(line (pt 232 144)(pt 216 144))
+	)
+	(port
+		(pt 232 160)
+		(output)
+		(text "CHR_A15" (rect 0 0 50 11)(font "Arial" ))
+		(text "CHR_A15" (rect 169 155 219 166)(font "Arial" ))
+		(line (pt 232 160)(pt 216 160))
+	)
+	(port
+		(pt 232 176)
+		(output)
+		(text "CHR_A14" (rect 0 0 50 11)(font "Arial" ))
+		(text "CHR_A14" (rect 169 171 219 182)(font "Arial" ))
+		(line (pt 232 176)(pt 216 176))
+	)
+	(port
+		(pt 232 192)
+		(output)
+		(text "CHR_A13" (rect 0 0 50 11)(font "Arial" ))
+		(text "CHR_A13" (rect 169 187 219 198)(font "Arial" ))
+		(line (pt 232 192)(pt 216 192))
+	)
+	(port
+		(pt 232 208)
+		(output)
+		(text "CHR_A12" (rect 0 0 50 11)(font "Arial" ))
+		(text "CHR_A12" (rect 169 203 219 214)(font "Arial" ))
+		(line (pt 232 208)(pt 216 208))
+	)
+	(drawing
+		(rectangle (rect 16 16 216 224))
+	)
+)
+(connector
+	(pt 224 176)
+	(pt 224 192)
+)
+(connector
+	(pt 216 192)
+	(pt 224 192)
+)
+(connector
+	(pt 328 176)
+	(pt 224 176)
+)
+(connector
+	(pt 232 192)
+	(pt 232 232)
+)
+(connector
+	(pt 216 232)
+	(pt 232 232)
+)
+(connector
+	(pt 328 192)
+	(pt 232 192)
+)
+(connector
+	(pt 248 208)
+	(pt 248 264)
+)
+(connector
+	(pt 216 264)
+	(pt 248 264)
+)
+(connector
+	(pt 328 208)
+	(pt 248 208)
+)
+(connector
+	(pt 328 224)
+	(pt 264 224)
+)
+(connector
+	(pt 264 224)
+	(pt 264 304)
+)
+(connector
+	(pt 216 304)
+	(pt 264 304)
+)
+(connector
+	(pt 328 240)
+	(pt 280 240)
+)
+(connector
+	(pt 280 240)
+	(pt 280 352)
+)
+(connector
+	(pt 216 352)
+	(pt 280 352)
+)
+(connector
+	(pt 328 256)
+	(pt 296 256)
+)
+(connector
+	(pt 296 256)
+	(pt 296 384)
+)
+(connector
+	(pt 216 384)
+	(pt 296 384)
+)
+(connector
+	(pt 328 272)
+	(pt 312 272)
+)
+(connector
+	(pt 312 272)
+	(pt 312 416)
+)
+(connector
+	(pt 312 416)
+	(pt 216 416)
+)
+(connector
+	(pt 328 160)
+	(pt 224 160)
+)
+(connector
+	(pt 224 160)
+	(pt 224 152)
+)
+(connector
+	(pt 216 152)
+	(pt 224 152)
+)
+(connector
+	(pt 328 144)
+	(pt 240 144)
+)
+(connector
+	(pt 240 144)
+	(pt 240 120)
+)
+(connector
+	(pt 216 120)
+	(pt 240 120)
+)
+(connector
+	(pt 328 128)
+	(pt 256 128)
+)
+(connector
+	(pt 256 128)
+	(pt 256 80)
+)
+(connector
+	(pt 216 80)
+	(pt 256 80)
+)
+(connector
+	(pt 560 144)
+	(pt 632 144)
+)
+(connector
+	(pt 560 128)
+	(pt 616 128)
+)
+(connector
+	(pt 560 192)
+	(pt 672 192)
+)
+(connector
+	(pt 672 192)
+	(pt 672 200)
+)
+(connector
+	(pt 680 200)
+	(pt 672 200)
+)
+(connector
+	(pt 560 176)
+	(pt 672 176)
+)
+(connector
+	(pt 672 176)
+	(pt 672 168)
+)
+(connector
+	(pt 680 168)
+	(pt 672 168)
+)
+(connector
+	(pt 560 208)
+	(pt 664 208)
+)
+(connector
+	(pt 664 208)
+	(pt 664 240)
+)
+(connector
+	(pt 560 160)
+	(pt 664 160)
+)
+(connector
+	(pt 664 160)
+	(pt 664 136)
+)
+(connector
+	(pt 632 144)
+	(pt 632 104)
+)
+(connector
+	(pt 616 128)
+	(pt 616 56)
+)
+(connector
+	(pt 616 56)
+	(pt 680 56)
+)
+(connector
+	(pt 632 104)
+	(pt 680 104)
+)
+(connector
+	(pt 664 136)
+	(pt 680 136)
+)
+(connector
+	(pt 664 240)
+	(pt 680 240)
+)
+(connector
+	(pt 560 224)
+	(pt 648 224)
+)
+(connector
+	(pt 648 224)
+	(pt 648 272)
+)
+(connector
+	(pt 680 272)
+	(pt 648 272)
+)
+(connector
+	(pt 560 240)
+	(pt 632 240)
+)
+(connector
+	(pt 632 240)
+	(pt 632 320)
+)
+(connector
+	(pt 680 320)
+	(pt 632 320)
+)
+(connector
+	(pt 560 256)
+	(pt 616 256)
+)
+(connector
+	(pt 616 256)
+	(pt 616 352)
+)
+(connector
+	(pt 680 352)
+	(pt 616 352)
+)
+(connector
+	(pt 560 272)
+	(pt 600 272)
+)
+(connector
+	(pt 600 272)
+	(pt 600 384)
+)
+(connector
+	(pt 680 384)
+	(pt 600 384)
+)
+(connector
+	(pt 560 288)
+	(pt 584 288)
+)
+(connector
+	(pt 584 288)
+	(pt 584 416)
+)
+(connector
+	(pt 680 416)
+	(pt 584 416)
+)
+(connector
+	(pt 560 304)
+	(pt 568 304)
+)
+(connector
+	(pt 568 304)
+	(pt 568 448)
+)
+(connector
+	(pt 568 448)
+	(pt 680 448)
 )
