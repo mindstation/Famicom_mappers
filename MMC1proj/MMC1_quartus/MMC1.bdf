@@ -34,6 +34,7 @@ applicable agreement for further details.
 		(line (pt 109 12)(pt 113 8))
 	)
 	(text "VCC" (rect 128 7 149 17)(font "Arial" (font_size 6)))
+	(annotation_block (location)(rect -16 88 48 104))
 )
 (pin
 	(input)
@@ -50,6 +51,7 @@ applicable agreement for further details.
 		(line (pt 109 12)(pt 113 8))
 	)
 	(text "VCC" (rect 128 7 149 17)(font "Arial" (font_size 6)))
+	(annotation_block (location)(rect -16 128 48 144))
 )
 (pin
 	(input)
@@ -66,6 +68,7 @@ applicable agreement for further details.
 		(line (pt 109 12)(pt 113 8))
 	)
 	(text "VCC" (rect 128 7 149 17)(font "Arial" (font_size 6)))
+	(annotation_block (location)(rect -16 160 48 176))
 )
 (pin
 	(input)
@@ -82,6 +85,7 @@ applicable agreement for further details.
 		(line (pt 109 12)(pt 113 8))
 	)
 	(text "VCC" (rect 128 7 149 17)(font "Arial" (font_size 6)))
+	(annotation_block (location)(rect -16 240 48 256))
 )
 (pin
 	(input)
@@ -98,6 +102,7 @@ applicable agreement for further details.
 		(line (pt 109 12)(pt 113 8))
 	)
 	(text "VCC" (rect 128 7 149 17)(font "Arial" (font_size 6)))
+	(annotation_block (location)(rect -16 272 48 288))
 )
 (pin
 	(input)
@@ -114,6 +119,7 @@ applicable agreement for further details.
 		(line (pt 109 12)(pt 113 8))
 	)
 	(text "VCC" (rect 128 7 149 17)(font "Arial" (font_size 6)))
+	(annotation_block (location)(rect -16 312 48 328))
 )
 (pin
 	(input)
@@ -130,6 +136,7 @@ applicable agreement for further details.
 		(line (pt 109 12)(pt 113 8))
 	)
 	(text "VCC" (rect 128 7 149 17)(font "Arial" (font_size 6)))
+	(annotation_block (location)(rect -16 360 48 376))
 )
 (pin
 	(input)
@@ -146,6 +153,7 @@ applicable agreement for further details.
 		(line (pt 109 12)(pt 113 8))
 	)
 	(text "VCC" (rect 128 7 149 17)(font "Arial" (font_size 6)))
+	(annotation_block (location)(rect -16 392 48 408))
 )
 (pin
 	(input)
@@ -162,6 +170,7 @@ applicable agreement for further details.
 		(line (pt 109 12)(pt 113 8))
 	)
 	(text "VCC" (rect 128 7 149 17)(font "Arial" (font_size 6)))
+	(annotation_block (location)(rect -16 424 48 440))
 )
 (pin
 	(input)
@@ -178,6 +187,7 @@ applicable agreement for further details.
 		(line (pt 125 12)(pt 129 8))
 	)
 	(text "VCC" (rect 144 7 165 17)(font "Arial" (font_size 6)))
+	(annotation_block (location)(rect -32 200 32 216))
 )
 (pin
 	(output)
@@ -194,6 +204,7 @@ applicable agreement for further details.
 		(line (pt 82 8)(pt 78 12))
 		(line (pt 78 12)(pt 82 8))
 	)
+	(annotation_block (location)(rect 856 64 920 80))
 )
 (pin
 	(output)
@@ -210,6 +221,7 @@ applicable agreement for further details.
 		(line (pt 82 8)(pt 78 12))
 		(line (pt 78 12)(pt 82 8))
 	)
+	(annotation_block (location)(rect 856 112 912 128))
 )
 (pin
 	(output)
@@ -226,6 +238,7 @@ applicable agreement for further details.
 		(line (pt 82 8)(pt 78 12))
 		(line (pt 78 12)(pt 82 8))
 	)
+	(annotation_block (location)(rect 856 144 920 160))
 )
 (pin
 	(output)
@@ -242,6 +255,7 @@ applicable agreement for further details.
 		(line (pt 82 8)(pt 78 12))
 		(line (pt 78 12)(pt 82 8))
 	)
+	(annotation_block (location)(rect 856 176 920 192))
 )
 (pin
 	(output)
@@ -258,6 +272,7 @@ applicable agreement for further details.
 		(line (pt 82 8)(pt 78 12))
 		(line (pt 78 12)(pt 82 8))
 	)
+	(annotation_block (location)(rect 856 208 920 224))
 )
 (pin
 	(output)
@@ -274,6 +289,7 @@ applicable agreement for further details.
 		(line (pt 82 8)(pt 78 12))
 		(line (pt 78 12)(pt 82 8))
 	)
+	(annotation_block (location)(rect 856 248 920 264))
 )
 (pin
 	(output)
@@ -290,6 +306,7 @@ applicable agreement for further details.
 		(line (pt 82 8)(pt 78 12))
 		(line (pt 78 12)(pt 82 8))
 	)
+	(annotation_block (location)(rect 856 280 920 296))
 )
 (pin
 	(output)
@@ -306,6 +323,7 @@ applicable agreement for further details.
 		(line (pt 82 8)(pt 78 12))
 		(line (pt 78 12)(pt 82 8))
 	)
+	(annotation_block (location)(rect 856 328 912 344))
 )
 (pin
 	(output)
@@ -322,6 +340,7 @@ applicable agreement for further details.
 		(line (pt 82 8)(pt 78 12))
 		(line (pt 78 12)(pt 82 8))
 	)
+	(annotation_block (location)(rect 856 360 920 376))
 )
 (pin
 	(output)
@@ -338,6 +357,7 @@ applicable agreement for further details.
 		(line (pt 82 8)(pt 78 12))
 		(line (pt 78 12)(pt 82 8))
 	)
+	(annotation_block (location)(rect 856 392 920 408))
 )
 (pin
 	(output)
@@ -354,6 +374,7 @@ applicable agreement for further details.
 		(line (pt 82 8)(pt 78 12))
 		(line (pt 78 12)(pt 82 8))
 	)
+	(annotation_block (location)(rect 856 424 920 440))
 )
 (pin
 	(output)
@@ -370,6 +391,7 @@ applicable agreement for further details.
 		(line (pt 82 8)(pt 78 12))
 		(line (pt 78 12)(pt 82 8))
 	)
+	(annotation_block (location)(rect 856 456 920 472))
 )
 (symbol
 	(rect 328 96 560 336)
@@ -449,84 +471,84 @@ applicable agreement for further details.
 		(pt 232 32)
 		(output)
 		(text "CIRAM_A10" (rect 0 0 62 11)(font "Arial" ))
-		(text "CIRAM_A10" (rect 159 27 221 38)(font "Arial" ))
+		(text "CIRAM_A10" (rect 159 27 211 38)(font "Arial" ))
 		(line (pt 232 32)(pt 216 32))
 	)
 	(port
 		(pt 232 48)
 		(output)
 		(text "PRG_A17" (rect 0 0 50 11)(font "Arial" ))
-		(text "PRG_A17" (rect 169 43 219 54)(font "Arial" ))
+		(text "PRG_A17" (rect 169 43 211 54)(font "Arial" ))
 		(line (pt 232 48)(pt 216 48))
 	)
 	(port
 		(pt 232 64)
 		(output)
 		(text "PRG_A16" (rect 0 0 50 11)(font "Arial" ))
-		(text "PRG_A16" (rect 169 59 219 70)(font "Arial" ))
+		(text "PRG_A16" (rect 169 59 211 70)(font "Arial" ))
 		(line (pt 232 64)(pt 216 64))
 	)
 	(port
 		(pt 232 80)
 		(output)
 		(text "PRG_A15" (rect 0 0 50 11)(font "Arial" ))
-		(text "PRG_A15" (rect 169 75 219 86)(font "Arial" ))
+		(text "PRG_A15" (rect 169 75 211 86)(font "Arial" ))
 		(line (pt 232 80)(pt 216 80))
 	)
 	(port
 		(pt 232 96)
 		(output)
 		(text "PRG_A14" (rect 0 0 50 11)(font "Arial" ))
-		(text "PRG_A14" (rect 169 91 219 102)(font "Arial" ))
+		(text "PRG_A14" (rect 169 91 211 102)(font "Arial" ))
 		(line (pt 232 96)(pt 216 96))
 	)
 	(port
 		(pt 232 112)
 		(output)
 		(text "nPRG_CE" (rect 0 0 53 11)(font "Arial" ))
-		(text "nPRG_CE" (rect 167 107 220 118)(font "Arial" ))
+		(text "nPRG_CE" (rect 167 107 211 118)(font "Arial" ))
 		(line (pt 232 112)(pt 216 112))
 	)
 	(port
 		(pt 232 128)
 		(output)
 		(text "nWRAM_CE" (rect 0 0 63 11)(font "Arial" ))
-		(text "nWRAM_CE" (rect 158 123 221 134)(font "Arial" ))
+		(text "nWRAM_CE" (rect 158 123 211 134)(font "Arial" ))
 		(line (pt 232 128)(pt 216 128))
 	)
 	(port
 		(pt 232 144)
 		(output)
 		(text "CHR_A16" (rect 0 0 50 11)(font "Arial" ))
-		(text "CHR_A16" (rect 169 139 219 150)(font "Arial" ))
+		(text "CHR_A16" (rect 169 139 211 150)(font "Arial" ))
 		(line (pt 232 144)(pt 216 144))
 	)
 	(port
 		(pt 232 160)
 		(output)
 		(text "CHR_A15" (rect 0 0 50 11)(font "Arial" ))
-		(text "CHR_A15" (rect 169 155 219 166)(font "Arial" ))
+		(text "CHR_A15" (rect 169 155 211 166)(font "Arial" ))
 		(line (pt 232 160)(pt 216 160))
 	)
 	(port
 		(pt 232 176)
 		(output)
 		(text "CHR_A14" (rect 0 0 50 11)(font "Arial" ))
-		(text "CHR_A14" (rect 169 171 219 182)(font "Arial" ))
+		(text "CHR_A14" (rect 169 171 211 182)(font "Arial" ))
 		(line (pt 232 176)(pt 216 176))
 	)
 	(port
 		(pt 232 192)
 		(output)
 		(text "CHR_A13" (rect 0 0 50 11)(font "Arial" ))
-		(text "CHR_A13" (rect 169 187 219 198)(font "Arial" ))
+		(text "CHR_A13" (rect 169 187 211 198)(font "Arial" ))
 		(line (pt 232 192)(pt 216 192))
 	)
 	(port
 		(pt 232 208)
 		(output)
 		(text "CHR_A12" (rect 0 0 50 11)(font "Arial" ))
-		(text "CHR_A12" (rect 169 203 219 214)(font "Arial" ))
+		(text "CHR_A12" (rect 169 203 211 214)(font "Arial" ))
 		(line (pt 232 208)(pt 216 208))
 	)
 	(drawing
