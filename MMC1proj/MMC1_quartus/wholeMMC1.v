@@ -44,10 +44,10 @@ module wholeMMC1 (
 	assign nWRAM_CE = !(nCPU_ROMSEL && rPRG_b[4]); 	//If nCPU_ROMSEL is hight, then no ROM or mapper selection. Switch on W_RAM (active is low).
 																	//Active signal is low (0).
 	
-	assign CHR_A16 = oCHR_A[4];
-	assign CHR_A15 = oCHR_A[3];
-	assign CHR_A14 = oCHR_A[2];
-	assign CHR_A13 = oCHR_A[1];
+	assign CHR_A16 = oCHR_A[3];
+	assign CHR_A15 = oCHR_A[2];
+	assign CHR_A14 = oCHR_A[1];
+	assign CHR_A13 = oCHR_A[0];
 	
 	//CPU and PPU works with different clocks. Made a combinational logic (multiplexer) for the PPU bus.
 	//A part of the CHR ROM bank switching mode. Multiplexer3.
@@ -101,7 +101,7 @@ module wholeMMC1 (
 				2'b10: //Fix first bank at $8000 (CPU_A14 is low) and switch 16 KB bank at $C000 (CPU_A14 is high).
 					begin
 						if (CPU_A14) 
-							oPRG_A = rPRG_b;
+							oPRG_A = rPRG_b[3:0];
 						else //First 16KB is fixed.
 							oPRG_A = 4'b0000;
 					end
@@ -110,7 +110,7 @@ module wholeMMC1 (
 						if (CPU_A14) 
 							oPRG_A = 4'b1111;
 						else //First 16KB is switchable.
-							oPRG_A = rPRG_b;
+							oPRG_A = rPRG_b[3:0];
 					end
 			endcase
 					
@@ -119,12 +119,12 @@ module wholeMMC1 (
 					//If the same value is in both CHR registers, 4KB mode causes erratic switching of bank
 					//during rendering.
 					if (PPU_A12)
-						oCHR_A[4:1] = rCHR_b1[4:1];
+						oCHR_A = rCHR_b1[4:1];
 					else
-						oCHR_A[4:1] = rCHR_b0[4:1];
+						oCHR_A = rCHR_b0[4:1];
 				end
 			else //If 0 then switch 8 KB at a time.
-				oCHR_A[4:1] = rCHR_b0[4:1];
+				oCHR_A = rCHR_b0[4:1];
 				//The last bit is PPU_A12 by the combinational logic.
 			
 		end
