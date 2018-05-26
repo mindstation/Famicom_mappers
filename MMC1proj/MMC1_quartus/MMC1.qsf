@@ -59,7 +59,6 @@ set_location_assignment PIN_N16 -to PRG_A14
 set_location_assignment PIN_L16 -to PRG_A15
 set_location_assignment PIN_K16 -to PRG_A16
 set_location_assignment PIN_J16 -to PRG_A17
-set_location_assignment PIN_K15 -to WRAM_CE
 set_location_assignment PIN_L15 -to nPRG_CE
 set_location_assignment PIN_R12 -to CPU_M2
 set_location_assignment PIN_T13 -to nCPU_ROMSEL
@@ -98,5 +97,6 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to PRG_A14
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to PRG_A15
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to PRG_A16
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to PRG_A17
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to WRAM_CE
+set_location_assignment PIN_K15 -to nWRAM_CE
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to nWRAM_CE
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
