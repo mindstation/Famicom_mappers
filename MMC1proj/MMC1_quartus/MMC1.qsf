@@ -55,27 +55,27 @@ set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
-set_location_assignment PIN_N16 -to PRG_A14
-set_location_assignment PIN_L16 -to PRG_A15
-set_location_assignment PIN_K16 -to PRG_A16
-set_location_assignment PIN_J16 -to PRG_A17
-set_location_assignment PIN_L15 -to nPRG_CE
-set_location_assignment PIN_R12 -to CPU_M2
-set_location_assignment PIN_T13 -to nCPU_ROMSEL
-set_location_assignment PIN_T14 -to nCPU_RW
-set_location_assignment PIN_P16 -to CPU_D7
-set_location_assignment PIN_R16 -to CPU_D0
-set_location_assignment PIN_N15 -to CPU_A14
-set_location_assignment PIN_P15 -to CPU_A13
-set_location_assignment PIN_N13 -to CHR_A12
-set_location_assignment PIN_N14 -to CHR_A13
-set_location_assignment PIN_M12 -to CHR_A14
-set_location_assignment PIN_L14 -to CHR_A15
-set_location_assignment PIN_J12 -to CHR_A16
-set_location_assignment PIN_F15 -to nCIRAM_A10
-set_location_assignment PIN_L10 -to PPU_A10
-set_location_assignment PIN_M11 -to PPU_A11
-set_location_assignment PIN_P14 -to PPU_A12
+set_location_assignment PIN_T14 -to PRG_A14
+set_location_assignment PIN_T13 -to PRG_A15
+set_location_assignment PIN_T12 -to PRG_A16
+set_location_assignment PIN_R12 -to PRG_A17
+set_location_assignment PIN_T15 -to nPRG_CE
+set_location_assignment PIN_N8 -to CPU_M2
+set_location_assignment PIN_P8 -to nCPU_ROMSEL
+set_location_assignment PIN_N6 -to nCPU_RW
+set_location_assignment PIN_L3 -to CPU_D7
+set_location_assignment PIN_N3 -to CPU_D0
+set_location_assignment PIN_T2 -to CPU_A14
+set_location_assignment PIN_L4 -to CPU_A13
+set_location_assignment PIN_D16 -to CHR_A12
+set_location_assignment PIN_J14 -to CHR_A13
+set_location_assignment PIN_K10 -to CHR_A14
+set_location_assignment PIN_F13 -to CHR_A15
+set_location_assignment PIN_F11 -to CHR_A16
+set_location_assignment PIN_D15 -to nCIRAM_A10
+set_location_assignment PIN_A2 -to PPU_A10
+set_location_assignment PIN_A3 -to PPU_A11
+set_location_assignment PIN_A4 -to PPU_A12
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to CHR_A12
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to CHR_A13
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to CHR_A14
@@ -97,6 +97,6 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to PRG_A14
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to PRG_A15
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to PRG_A16
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to PRG_A17
-set_location_assignment PIN_K15 -to nWRAM_CE
+set_location_assignment PIN_N2 -to nWRAM_CE
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to nWRAM_CE
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
