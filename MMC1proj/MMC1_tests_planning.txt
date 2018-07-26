@@ -1,0 +1,17 @@
+in nCPU_ROMSEL	nCPU_RW		out	nPRG_CE
+	0	0			1
+	0	1			0
+	1	0			1
+	1	1			1
+
+in nCPU_ROMSEL	rPRG_b[4]	out	nWRAM_CE
+	0	0			1
+	0	1			1
+	1	0			0	
+	1	1			1
+
+in PPU_A11	PPU_A10		rControl[1]	rControl[0]		out CIRAM_A10
+	x	x		0		0			0
+	x	x		0		1			1
+				1		0			PPU_A10
+				1		1			PPU_A11
