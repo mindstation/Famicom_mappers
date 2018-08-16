@@ -1,5 +1,6 @@
 module wholeMMC1 (
-						input  wire CPU_M2,
+						input  wire CPU_M2,	//"Talk" CPU mode is low M2 (aka Fi2).
+													//"Listen" CPU mode is high M2 (aka Fi2).
 						input  wire CPU_A13,
 						input  wire CPU_A14,
 						input  wire nCPU_ROMSEL,
@@ -59,37 +60,33 @@ module wholeMMC1 (
 	
 	
 	
-	always @(negedge CPU_M2) //"Talk" CPU mode is low M2 (aka Fi2).
-										//"Listen" CPU mode is high M2 (aka Fi2). nCPU_ROMSEL = !(CPU_A15 && M2).
+	always @(negedge nCPU_ROMSEL) //nCPU_ROMSEL like clock, because nCPU_ROMSEL = !(CPU_A15 && M2). But #ROMSEL is later M2.
 		begin
-			if (!nCPU_ROMSEL) //#ROMSEL is later M2.
+			if (CPU_M2 && !nCPU_ROMSEL && !nCPU_RW) //Check nCPU_ROMSEL negedge because M2 changes, or CPU_A15? And CPU must write.
 				begin
-					if (!nCPU_RW) //CPU writes to the cartridge memory.
+					if (CPU_D7)
 						begin
-							if (CPU_D7)
+							rLoad = 5'b10000; // The initial value.
+							rControl = rControl || 5'b01100; //fixed last PRG bank at $C000, don't change other bits.
+						end
+					else
+						begin
+							if (rLoad[0]) //Inintial 1 come to a zero position, 4 writes was made.
 								begin
-									rLoad = 5'b10000; // The initial value.
-									rControl = rControl || 5'b01100; //fixed last PRG bank at $C000, don't change other bits.
+									case ({CPU_A14, CPU_A13})
+										2'b00: rControl = {CPU_D0,rLoad[4:1]};
+										2'b01: rCHR_b0 = {CPU_D0,rLoad[4:1]};
+										2'b10: rCHR_b1 = {CPU_D0,rLoad[4:1]};
+										2'b11: rPRG_b = {CPU_D0,rLoad[4:1]};
+									endcase
+									rLoad = 5'b10000; // Reset to inintial value
 								end
 							else
 								begin
-									if (rLoad[0]) //Inintial 1 come to a zero position, 4 writes was made.
-										begin
-											case ({CPU_A14, CPU_A13})
-												2'b00: rControl = {CPU_D0,rLoad[4:1]};
-												2'b01: rCHR_b0 = {CPU_D0,rLoad[4:1]};
-												2'b10: rCHR_b1 = {CPU_D0,rLoad[4:1]};
-												2'b11: rPRG_b = {CPU_D0,rLoad[4:1]};
-											endcase
-											rLoad = 5'b10000; // Reset to inintial value
-										end
-									else
-										begin
-											rLoad = rLoad >> 1'd1;							
-											rLoad[4] = CPU_D0;							
-										end							
+									rLoad = rLoad >> 1'd1;
+									rLoad[4] = CPU_D0;
 								end
-						end					
+						end
 				end
 			
 			case ({rControl[3], rControl[2]}) //PRG ROM bank switching mode.
