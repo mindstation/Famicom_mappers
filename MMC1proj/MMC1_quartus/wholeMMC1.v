@@ -62,7 +62,7 @@ module wholeMMC1 (
 	
 	always @(negedge nCPU_ROMSEL) //nCPU_ROMSEL like clock, because nCPU_ROMSEL = !(CPU_A15 && M2). But #ROMSEL is later M2.
 		begin
-			if (CPU_M2 && !nCPU_ROMSEL && !nCPU_RW) //Check nCPU_ROMSEL negedge because M2 changes, or CPU_A15? And CPU must write.
+			if (CPU_M2 && !nCPU_RW) //Check nCPU_ROMSEL negedge because M2 changes, or CPU_A15? And CPU must write.
 				begin
 					if (CPU_D7)
 						begin
