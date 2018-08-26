@@ -88,13 +88,11 @@ module wholeMMC1 (
 								end
 						end
 				end
-			
+		end
+	
+	always //Switching out async nCPU_ROMSEL
+		begin
 			case ({rControl[3], rControl[2]}) //PRG ROM bank switching mode.
-				2'b00, 2'b01: //Switch 32 KB at $8000.
-					begin
-						oPRG_A[3:1] = rPRG_b[3:1];
-						oPRG_A[0] = CPU_A14;
-					end
 				2'b10: //Fix first bank at $8000 (CPU_A14 is low) and switch 16 KB bank at $C000 (CPU_A14 is high).
 					begin
 						if (CPU_A14) 
@@ -108,6 +106,11 @@ module wholeMMC1 (
 							oPRG_A = 4'b1111;
 						else //First 16KB is switchable.
 							oPRG_A = rPRG_b[3:0];
+					end
+				default//2'b00, 2'b01: //Switch 32 KB at $8000.
+					begin
+						oPRG_A[3:1] = rPRG_b[3:1];
+						oPRG_A[0] = CPU_A14;
 					end
 			endcase
 					
