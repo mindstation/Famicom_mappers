@@ -20,9 +20,9 @@ applicable agreement for further details.
 */
 (header "symbol" (version "1.1"))
 (symbol
-	(rect 16 16 248 256)
+	(rect 16 16 248 224)
 	(text "wholeMMC1" (rect 5 0 53 12)(font "Arial" ))
-	(text "inst" (rect 8 224 20 236)(font "Arial" ))
+	(text "inst" (rect 8 192 20 204)(font "Arial" ))
 	(port
 		(pt 0 32)
 		(input)
@@ -145,39 +145,11 @@ applicable agreement for further details.
 	(port
 		(pt 232 144)
 		(output)
-		(text "CHR_A16" (rect 0 0 44 12)(font "Arial" ))
-		(text "CHR_A16" (rect 167 139 211 151)(font "Arial" ))
-		(line (pt 232 144)(pt 216 144)(line_width 1))
-	)
-	(port
-		(pt 232 160)
-		(output)
-		(text "CHR_A15" (rect 0 0 44 12)(font "Arial" ))
-		(text "CHR_A15" (rect 167 155 211 167)(font "Arial" ))
-		(line (pt 232 160)(pt 216 160)(line_width 1))
-	)
-	(port
-		(pt 232 176)
-		(output)
-		(text "CHR_A14" (rect 0 0 46 12)(font "Arial" ))
-		(text "CHR_A14" (rect 165 171 211 183)(font "Arial" ))
-		(line (pt 232 176)(pt 216 176)(line_width 1))
-	)
-	(port
-		(pt 232 192)
-		(output)
-		(text "CHR_A13" (rect 0 0 44 12)(font "Arial" ))
-		(text "CHR_A13" (rect 167 187 211 199)(font "Arial" ))
-		(line (pt 232 192)(pt 216 192)(line_width 1))
-	)
-	(port
-		(pt 232 208)
-		(output)
-		(text "CHR_A12" (rect 0 0 44 12)(font "Arial" ))
-		(text "CHR_A12" (rect 167 203 211 215)(font "Arial" ))
-		(line (pt 232 208)(pt 216 208)(line_width 1))
+		(text "CHR_A[4..0]" (rect 0 0 57 12)(font "Arial" ))
+		(text "CHR_A[4..0]" (rect 154 139 211 151)(font "Arial" ))
+		(line (pt 232 144)(pt 216 144)(line_width 3))
 	)
 	(drawing
-		(rectangle (rect 16 16 216 224)(line_width 1))
+		(rectangle (rect 16 16 216 192)(line_width 1))
 	)
 )
