@@ -76,6 +76,10 @@ module wholeMMC1 (
 						end
 					else
 						begin
+							rLoad = rLoad >> 1'd1;
+							rLoad[3] = rLoad4;
+							rLoad4 = CPU_D0;
+							
 							if (rLoad[0]) //Inintial 1 come to a zero position, 4 writes was made.
 								begin
 									case ({CPU_A14, CPU_A13})
@@ -91,13 +95,7 @@ module wholeMMC1 (
 									
 									rLoad4 = 1'b1;
 									rLoad = 4'b0000; // Reset to inintial value
-								end
-							else
-								begin
-									rLoad = rLoad >> 1'd1;
-									rLoad[3] = rLoad4;
-									rLoad4 = CPU_D0;
-								end
+								end							
 						end
 				end
 		end
