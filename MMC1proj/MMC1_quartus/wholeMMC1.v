@@ -60,11 +60,7 @@ module wholeMMC1 (
 							rControl32 = 2'b11; //fixed last PRG bank at $C000, don't change other bits.
 						end
 					else
-						begin
-							rLoad = rLoad >> 1'd1;
-							rLoad[3] = rLoad4;
-							rLoad4 = CPU_D0;
-							
+						begin							
 							if (rLoad[0]) //Inintial 1 come to a zero position, 4 writes was made.
 								begin
 									case ({CPU_A14, CPU_A13})
@@ -80,7 +76,13 @@ module wholeMMC1 (
 									
 									rLoad4 = 1'b1;
 									rLoad = 4'b0000; // Reset to inintial value
-								end							
+								end
+							else
+								begin
+									rLoad = rLoad >> 1'd1;
+									rLoad[3] = rLoad4;
+									rLoad4 = CPU_D0;
+								end
 						end
 				end
 		end
