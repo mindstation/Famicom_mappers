@@ -18,12 +18,10 @@ module wholeMMC1 (
 						);
 						
 	//MMC1 registers
-	reg[4:4] rLoad4 = 1'b1;
-	reg[3:0] rLoad30;				 		//MMC1 Load shift register (rLoad4 + rLoad30) with power on reset state 5'b10000.
-	reg[1:0] rControl32 = 2'b11;
-	reg[2:0] rControl4_10; 					//MMC1 Control register (rControl32 + rControl4_10) with power on reset state 5'b01100.
-	//Quartus 13 can't make power-on on register like 01100. Only 00000 or 11111. That is why separate registers for ones and zeroes there is.
-	reg[4:0] rPRG_b; 						//MMC1 PRG bank selector. With default power on reset state (all zeros) like MMC1C version.
+	reg[4:0] rLoad;				 		//MMC1 Load shift register with power on reset state 5'b00000. Quartus 13 can't make power-on on register like 10000. Only 00000 or 11111.
+	reg[4:0] rControl; 					//MMC1 Control register with power on reset state 5'b00000.
+	//Made inversion for rControl[3:2] in the code.
+	reg[4:0] rPRG_b; 					//MMC1 PRG bank selector. With default power on reset state (all zeros) like MMC1C version.
 	reg[4:0] rCHR_b0; 					//MMC1 CHR bank 0 selector.
 	reg[4:0] rCHR_b1; 					//MMC1 CHR bank 1 selector. CHR is zero too, because it's default power on.
 	
@@ -32,73 +30,62 @@ module wholeMMC1 (
 																	//Active signal is low (0).
 	
 	//Mirroring mode. Multiplexer4. 00 - One-screen Low. 01 - One-screen High. 10 - Two-screen vertical. 11 - Two-screen horizontal.
-	assign CIRAM_A10 = rControl4_10[1] ? (rControl4_10[0] ? PPU_A11 : PPU_A10) : (rControl4_10[0] ? 1'b1 : 1'b0);
+	assign CIRAM_A10 = rControl[1] ? (rControl[0] ? PPU_A11 : PPU_A10) : (rControl[0] ? 1'b1 : 1'b0);
 	
-		
-	always @(negedge nCPU_ROMSEL) //nCPU_ROMSEL like clock, because nCPU_ROMSEL = !(CPU_A15 && M2). But #ROMSEL is later M2.
+	always @(negedge CPU_M2)
 		begin
-			if (CPU_M2 && !nCPU_RW) //Check nCPU_ROMSEL negedge because M2 changes, or CPU_A15? And CPU must be writting.
+			if (nCPU_ROMSEL == 0 && nCPU_RW == 0) //Check nCPU_ROMSEL and CPU must be writting.
 				begin
 					if (CPU_D7)
 						begin
-							rLoad4 = 1'b1;
-							rLoad30 = 4'b0000; // The initial value.
+							rLoad = 5'b00000; // The initial value.
 							
-							rControl32 = 2'b11; //fixed last PRG bank at $C000, don't change other bits.
+							rControl = 5'b00000; //fixed last PRG bank at $C000, rControl[3:2] is inverted.
 						end
 					else
 						begin							
-							if (rLoad30[0]) //Inintial 1 come to a zero position, 4 writes was made.
+							if (rLoad[0]) //Inintial 1 come to a zero position, 4 writes was made.
 								begin
 									case ({CPU_A14, CPU_A13})
-										2'b00:
-											begin
-												rControl4_10 = {CPU_D0,rLoad30[2:1]};
-												rControl32 = {rLoad4[4],rLoad30[3]};
-											end
-										2'b01: rCHR_b0 = {CPU_D0,rLoad4[4],rLoad30[3:1]};
-										2'b10: rCHR_b1 = {CPU_D0,rLoad4[4],rLoad30[3:1]};
-										2'b11: rPRG_b = {CPU_D0,rLoad4[4],rLoad30[3:1]};
+										2'b00: rControl = {CPU_D0,~rLoad[4:3],rLoad[2:1]};
+										2'b01: rCHR_b0 = {CPU_D0,rLoad[4:1]};
+										2'b10: rCHR_b1 = {CPU_D0,rLoad[4:1]};
+										2'b11: rPRG_b = {CPU_D0,rLoad[4:1]};
 									endcase
-									
-									rLoad4 = 1'b1;
-									rLoad30 = 4'b0000; // Reset to inintial value
+									rLoad = 5'b00000; // Reset to inintial value
 								end
 							else
 								begin
-									rLoad30 = rLoad30 >> 1'd1;
-									rLoad30[3] = rLoad4;
-									rLoad4 = CPU_D0;
+									if (rLoad == 0) rLoad = 5'b10000;
+									rLoad = rLoad >> 1'b1;
+									rLoad[4] = CPU_D0;
 								end
 						end
 				end
-		end
-	
-	always //Switching out async nCPU_ROMSEL
-		begin
+
 			//PRG ROM bank switching mode.
-			if (rControl32[1]) //2'b10, 2'b11:
-				if (rControl32[1] && rControl32[0]) //2'b11
+			if (~rControl[3] == 1) //rControl is 2'b01000 or 2'b01100. Inverted logic.
+				if (~rControl[2] == 1) //rControl = 2'b01100. Inverted logic.
 					begin //Fix last bank at $C000 (CPU_A14 is high) and switch 16 KB bank at $8000 (CPU_A14 is low).
 						PRG_A[0] = rPRG_b[0] || CPU_A14;
 						PRG_A[1] = rPRG_b[1] || CPU_A14;
 						PRG_A[2] = rPRG_b[2] || CPU_A14;
 						PRG_A[3] = rPRG_b[3] || CPU_A14;
 					end
-				else //2'b10
+				else //2'b01000. Inverted logic.
 					begin //Fix first bank at $8000 (CPU_A14 is low) and switch 16 KB bank at $C000 (CPU_A14 is high).
 						PRG_A[0] = rPRG_b[0] && CPU_A14;
 						PRG_A[1] = rPRG_b[1] && CPU_A14;
 						PRG_A[2] = rPRG_b[2] && CPU_A14;
 						PRG_A[3] = rPRG_b[3] && CPU_A14;
 					end				
-			else //2'b00, 2'b01:
+			else //2'b00000, 2'b00100. Inverted logic.
 				begin //Switch 32 KB at $8000.
-					PRG_A[3:1] = rPRG_b[3:1];
-					PRG_A[0] = rControl32[1] && CPU_A14;
+					PRG_A = {rPRG_b[3:1],CPU_A14};
 				end
-					
-			if (rControl4_10[2]) //CHR ROM bank switching mode.
+
+			//CHR ROM bank switching mode.
+			if (rControl[4]) 
 				begin //If 1 then switch two separate 4 KB banks.
 					//If the same value is in both CHR registers, 4KB mode causes erratic switching of bank
 					//during rendering.
@@ -108,10 +95,7 @@ module wholeMMC1 (
 						CHR_A = rCHR_b0;
 				end
 			else //If 0 then switch 8 KB at a time.
-				CHR_A[4:1] = rCHR_b0[4:1];
-				CHR_A[0] = PPU_A12;
+				CHR_A = {rCHR_b0[4:1],PPU_A12};
 				//It looks like a short circuit, if MMC1 CHR_A12 connected to ROM with PPU_A12. DON'T DO IT!
-			
-		end
-	
+		end	
 endmodule
